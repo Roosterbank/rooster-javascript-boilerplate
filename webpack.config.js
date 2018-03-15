@@ -1,4 +1,4 @@
-const path = require('path');
+/* eslint-disable import/no-commonjs */
 
 module.exports = {
   module: {
@@ -10,4 +10,6 @@ module.exports = {
       }
     }]
   }
-}
+};
+
+/* eslint-enable import/no-commonjs */

@@ -1,17 +1,11 @@
-import {
-  curry,
-  pipe,
-  reverse,
-  split,
-  join,
-  stringReverse,
-  filter
-} from './utils';
+import { curry, pipe, reverse, split, join, stringReverse, filter } from './utils';
 import CurrencyFormats from './CurrencyFormats';
 
 const _getCurrencyFormat = (currency = '') => ({
-  ...(CurrencyFormats[currency.toLowerCase()] ||
-  CurrencyFormats.default)
+  ...(
+    CurrencyFormats[currency.toLowerCase()] ||
+    CurrencyFormats.default
+  )
 });
 
 const _getDecimalPlacesFor = currency => _getCurrencyFormat(currency).decimals;
@@ -112,23 +106,5 @@ const Currency = currency => ({
   formatWithPlaceholderSymbol: _formatWithPlaceholderSymbol(currency),
   formatWithoutSymbol: _formatWithoutSymbol(currency)
 });
-
-const cur = Currency('usd');
-
-console.log(CurrencyUtils.getDecimalPlacesFor('USD'));
-console.log(CurrencyUtils.getFormatFor('USD'));
-console.log(CurrencyUtils.toFixed('USD', 897987100.021));
-console.log(CurrencyUtils.formatWithSymbol('USD', 897987100.021));
-console.log(CurrencyUtils.formatWithPlaceholderSymbol('usd', 897987100.021));
-console.log(CurrencyUtils.formatWithoutSymbol('usd', 897987100.021));
-
-console.log('\n\n\n');
-
-console.log(cur.getDecimalPlaces());
-console.log(cur.getFormat());
-console.log(cur.toFixed(897987100.021));
-console.log(cur.formatWithSymbol(897987100.021));
-console.log(cur.formatWithPlaceholderSymbol(897987100.021));
-console.log(cur.formatWithoutSymbol(897987100.021));
 
 export { CurrencyUtils, Currency };

@@ -1,9 +1,10 @@
 {
-  "name": "rooster-javascript-boilerplate",
+  "name": "rooster-currency-utils",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "webpack --mode production --config webpack.config.prod.js",
     "dev": "babel-watch --watch src src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
