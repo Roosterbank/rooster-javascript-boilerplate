@@ -1,23 +1,26 @@
 /* eslint-disable import/no-commonjs */
 
 const path = require('path');
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const config = require('./webpack.config');
 
-module.exports = merge(config, {
+const clientConfig = merge(config, {
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'index.js'
-  },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
-  ]
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    libraryTarget: 'commonjs2'
+  }
 });
 
+const serverConfig = merge(config, {
+  target: 'node',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.node.js',
+    libraryTarget: 'commonjs2'
+  }
+});
+
+
+module.exports = [ serverConfig, clientConfig ];
 /* eslint-enable import/no-commonjs */

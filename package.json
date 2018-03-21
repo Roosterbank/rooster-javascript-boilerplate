@@ -1,8 +1,9 @@
 {
-  "name": "rooster-currency-utils",
+  "name": "rooster-javascript-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist",
+  "types": "./src/index.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "webpack --mode production --config webpack.config.prod.js",
